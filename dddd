@@ -1,0 +1,16 @@
+AMIDEWINx64.EXE /IVN "LENOVO" ^
+/IV "N2JET71W (1.49 )" ^
+/ID "06/12/2023" ^
+/SM "LENOVO" ^
+/SP "20U9005TUS" ^
+/SV "ThinkPad X1 Carbon Gen 8" ^
+/SS "PF3X92L4" ^
+/SU 2B3F45D6213E47A2B6399CF1E24C82AA ^
+/SK "20U9" ^
+/SF "ThinkPad" ^
+/BM "LENOVO" ^
+/BP "20U9005TUS" ^
+/BV "SDK0J40697 WIN" ^
+/BS "L1HF93A0" ^
+/BT "No Asset Tag" ^
+/BLC "Base Board Chassis Location"
