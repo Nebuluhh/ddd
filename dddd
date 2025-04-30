@@ -1,28 +1,26 @@
-from datetime import datetime
-import random
+; ------- DELETE VMWARE REGISTRY KEYS -------
+[-HKEY_LOCAL_MACHINE\SOFTWARE\VMware, Inc.]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmci]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmhgfs]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmvss]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmx86]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmusb]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VMMEMCTL]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vm3dmp]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmrawdsk]
 
-# Generate a fake volume ID in hex format (XXXX-XXXX)
-def generate_volume_id():
-    return f"{random.randint(0x1000, 0xFFFF):04X}-{random.randint(0x1000, 0xFFFF):04X}"
+; ------- DELETE VIRTUALBOX REGISTRY KEYS -------
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Oracle\VirtualBox Guest Additions]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VBoxGuest]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VBoxMouse]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VBoxService]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VBoxSF]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VBoxVideo]
 
-# Generate a fake MachineGuid (32 hexadecimal characters)
-def generate_machine_guid():
-    return ''.join(random.choices('0123456789abcdef', k=32))
-
-volume_id = generate_volume_id()
-machine_guid = generate_machine_guid()
-reg_content = f"""Windows Registry Editor Version 5.00
-
-[HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography]
-"MachineGuid"="{machine_guid}"
-
-[HKEY_LOCAL_MACHINE\\SYSTEM\\MountedDevices]
-"\\DosDevices\\C:"=hex:5c,00,3f,00,3f,00,5c,00,56,00,6f,00,6c,00,75,00,6d,00,65,\
-  00,7b,00,{volume_id[0:2]},{volume_id[2:4]},{volume_id[5:7]},{volume_id[7:9]},00,7d,00
-"""
-
-file_path = "/mnt/data/spoof_volume_and_machineguid.reg"
-with open(file_path, "w") as file:
-    file.write(reg_content)
-
-file_path
+; ------- DELETE HYPER-V REGISTRY KEYS -------
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Hyper-V]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmicheartbeat]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmicrdv]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmicshutdown]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmictimesync]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmicvss]
