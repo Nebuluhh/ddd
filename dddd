@@ -1,26 +1,17 @@
-; ------- DELETE VMWARE REGISTRY KEYS -------
-[-HKEY_LOCAL_MACHINE\SOFTWARE\VMware, Inc.]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmci]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmhgfs]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmvss]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmx86]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmusb]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VMMEMCTL]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vm3dmp]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmrawdsk]
+sc stop VMTools
+sc config VMTools start= disabled
 
-; ------- DELETE VIRTUALBOX REGISTRY KEYS -------
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Oracle\VirtualBox Guest Additions]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VBoxGuest]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VBoxMouse]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VBoxService]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VBoxSF]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VBoxVideo]
+sc stop VMUpgradeHelper
+sc config VMUpgradeHelper start= disabled
 
-; ------- DELETE HYPER-V REGISTRY KEYS -------
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Hyper-V]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmicheartbeat]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmicrdv]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmicshutdown]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmictimesync]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmicvss]
+sc stop VMUSBArbService
+sc config VMUSBArbService start= disabled
+
+sc stop VMnetDHCP
+sc config VMnetDHCP start= disabled
+
+sc stop VMAuthdService
+sc config VMAuthdService start= disabled
+
+sc stop VMwareHostd
+sc config VMwareHostd start= disabled
