@@ -1,3 +1,8 @@
+@echo off
+echo [*] Disabling VMware, VirtualBox, and Hyper-V services...
+timeout /t 1 >nul
+
+:: === VMware Services ===
 sc stop VMTools
 sc config VMTools start= disabled
 
@@ -15,3 +20,29 @@ sc config VMAuthdService start= disabled
 
 sc stop VMwareHostd
 sc config VMwareHostd start= disabled
+
+:: === VirtualBox Services ===
+sc stop VBoxService
+sc config VBoxService start= disabled
+
+sc stop VBoxDrv
+sc config VBoxDrv start= disabled
+
+:: === Hyper-V Services ===
+sc stop vmicheartbeat
+sc config vmicheartbeat start= disabled
+
+sc stop vmicvss
+sc config vmicvss start= disabled
+
+sc stop vmicshutdown
+sc config vmicshutdown start= disabled
+
+sc stop vmictimesync
+sc config vmictimesync start= disabled
+
+sc stop vmicrdv
+sc config vmicrdv start= disabled
+
+echo [✓] All VM-related services have been disabled.
+pause
